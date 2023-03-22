@@ -9,8 +9,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b8ee30bf80844b1daf0538035758583c3d298/73/18ed12da/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FactoryInput.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -129,6 +127,7 @@
       <workItem from="1679484501361" duration="219000" />
       <workItem from="1679484759109" duration="954000" />
       <workItem from="1679485746519" duration="2462000" />
+      <workItem from="1679489053049" duration="21000" />
     </task>
     <servers />
   </component>
