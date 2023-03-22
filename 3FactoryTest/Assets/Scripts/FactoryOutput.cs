@@ -29,7 +29,7 @@ public class FactoryOutput : MonoBehaviour
     }
     private void OnFactoryTick()
     {
-        if (itemsTower.HaveSpace())
+        if (itemsTower.IsHaveSpace())
         {
             var curItem = Instantiate(itemDrop);
             itemsTower.AddItem(curItem);
@@ -42,12 +42,12 @@ public class FactoryOutput : MonoBehaviour
 
     private void GetItem(Player player)
     {
-        if (itemsTower.HaveItems() && player.HaveSpace())
+        if (itemsTower.IsHaveItems() && player.HaveSpace())
         {
             var item = itemsTower.RemoveItem();
             player.SetItem(item);
         }   
     }
 
-    public bool HaveSpace() => itemsTower.HaveSpace();
+    public bool IsHaveSpace() => itemsTower.IsHaveSpace();
 }

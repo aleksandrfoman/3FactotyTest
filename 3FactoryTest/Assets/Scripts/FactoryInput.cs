@@ -26,24 +26,20 @@ public class FactoryInput : MonoBehaviour
         inputTrigger.OnTrigger.AddListener(GetItem);
     }
 
-    public bool IsTakeFactroy()
+    public void TakeItem()
     {
-        if (itemsTower.HaveItems())
+        if (itemsTower.IsHaveItems())
         {
             var curItem = itemsTower.RemoveItem();
             curItem.transform.parent = null;
-            curItem.transform.DOLocalMove( factoryPos.position,durationTime).SetEase(Ease.Linear);
-            Destroy(curItem.gameObject,durationTime);
-            return true;
+            curItem.transform.DOLocalMove(factoryPos.position, durationTime).SetEase(Ease.Linear);
+            Destroy(curItem.gameObject, durationTime);
         }
-        return false;
     }
 
-    public bool IsFactoryHaveItems() => itemsTower.HaveItems();
-    
     private void GetItem(Player player)
     {
-        if (itemsTower.HaveSpace() && player.HaveItems())
+        if (itemsTower.IsHaveSpace() && player.HaveItems())
         {
             var curItem = player.GetItemFromType(itemType);
             if (curItem != null)
@@ -55,4 +51,8 @@ public class FactoryInput : MonoBehaviour
             }
         }
     }
+    
+    public bool IsFactoryHaveItems() => itemsTower.IsHaveItems();
+    public bool IsHaveSpace() => itemsTower.IsHaveSpace();
+
 }

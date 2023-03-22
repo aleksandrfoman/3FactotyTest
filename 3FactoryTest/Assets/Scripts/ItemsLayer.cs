@@ -20,13 +20,13 @@ public class ItemsTower
     {
         for (int i = 0; i < layers.Count; i++)
         {
-            if (layers[i].HaveSpace())
+            if (layers[i].IsHaveSpace())
             {
                 layers[i].AddItem(item);
                 return;
             }
         }
-        if (CanAddLayer())
+        if (IsCanAddLayer())
         {
             layers.Add(new ItemsLayer(layersCount,rowCount));   
             AddItem(item);
@@ -37,10 +37,10 @@ public class ItemsTower
     {
         for (int i = layers.Count-1;i>=0; i--)
         {
-            if (layers[i].HaveItems())
+            if (layers[i].IsHaveItems())
             {
                 var item = layers[i].GetItemFromType(itemType);
-                if (!layers[i].HaveItems())
+                if (!layers[i].IsHaveItems())
                 {
                     layers.Remove(layers[i]);
                 }
@@ -54,10 +54,10 @@ public class ItemsTower
     {
         for (int i = layers.Count-1;i>=0; i--)
         {
-            if (layers[i].HaveItems())
+            if (layers[i].IsHaveItems())
             {
                 var item = layers[i].RemoveItem();
-                if (!layers[i].HaveItems())
+                if (!layers[i].IsHaveItems())
                 {
                     layers.Remove(layers[i]);
                 }
@@ -67,16 +67,16 @@ public class ItemsTower
         return null;
     }
     
-    public bool HaveSpace()
+    public bool IsHaveSpace()
     {
         for (int i = 0; i < layers.Count; i++)
         {
-            if (layers[i].HaveSpace())
+            if (layers[i].IsHaveSpace())
             {
                 return true;
             }
         }
-        return CanAddLayer();
+        return IsCanAddLayer();
     }
 
     public Vector3 GetLastPos()
@@ -94,18 +94,18 @@ public class ItemsTower
 
     }
 
-    public bool HaveItems()
+    public bool IsHaveItems()
     {
         for (int i = 0; i < layers.Count; i++)
         {
-            if (layers[i].HaveItems())
+            if (layers[i].IsHaveItems())
             {
                 return true;
             }
         }
         return false;
     }
-    private bool CanAddLayer()
+    private bool IsCanAddLayer()
     {
         return layers.Count < columnCount;
     }
@@ -126,13 +126,13 @@ public class ItemsLayer
     {
         for (int i = 0; i < lines.Count; i++)
         {
-            if (lines[i].HaveSpace())
+            if (lines[i].IsHaveSpace())
             {
                 lines[i].AddItem(item);
                 return;;
             }
         }
-        if (CanAddLine())
+        if (IsCanAddLine())
         {
             lines.Add(new ItemsLine(lineCount));   
             AddItem(item);
@@ -143,10 +143,10 @@ public class ItemsLayer
     {
         for (int i = lines.Count-1;i>=0; i--)
         {
-            if (lines[i].HaveItems())
+            if (lines[i].IsHaveItems())
             {
                 var item = lines[i].RemoveItem();
-                if (!lines[i].HaveItems())
+                if (!lines[i].IsHaveItems())
                 {
                     lines.Remove(lines[i]);
                 }
@@ -161,10 +161,10 @@ public class ItemsLayer
     {
         for (int i = lines.Count-1;i>=0; i--)
         {
-            if (lines[i].HaveItems())
+            if (lines[i].IsHaveItems())
             {
                 var item = lines[i].GetItemFromType(itemType);
-                if (!lines[i].HaveItems())
+                if (!lines[i].IsHaveItems())
                 {
                     lines.Remove(lines[i]);
                 }
@@ -174,16 +174,16 @@ public class ItemsLayer
         return null;
     }
     
-    public bool HaveSpace()
+    public bool IsHaveSpace()
     {
         for (int i = 0; i < lines.Count; i++)
         {
-            if (lines[i].HaveSpace())
+            if (lines[i].IsHaveSpace())
             {
                 return true;
             }
         }
-        return CanAddLine();
+        return IsCanAddLine();
     }
 
     public Vector2 GetLastPos()
@@ -199,11 +199,11 @@ public class ItemsLayer
             return new Vector2(x, y);
         }
     }
-    public bool HaveItems()
+    public bool IsHaveItems()
     {
         for (int i = 0; i < lines.Count; i++)
         {
-            if (lines[i].HaveItems())
+            if (lines[i].IsHaveItems())
             {
                 return true;
             }
@@ -211,7 +211,7 @@ public class ItemsLayer
         return false;
     }
     
-    private bool CanAddLine()
+    private bool IsCanAddLine()
     {
         return lines.Count < rowCount;
     }
@@ -251,12 +251,12 @@ public class ItemsLine
         if(item!=null)
         items.Add(item);
     }
-    public bool HaveSpace()
+    public bool IsHaveSpace()
     {
         return items.Count < count;
     }
 
-    public bool HaveItems()
+    public bool IsHaveItems()
     {
         return items.Count > 0;
     }

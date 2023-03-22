@@ -28,6 +28,6 @@ public class BackpackManager : MonoBehaviour
 
     public Item GetItemFromType(ItemType itemType) => itemsTower.GetItemFromType(itemType);
     public Item RemoveItem() => itemsTower.RemoveItem();
-    public bool HaveItems() => itemsTower.HaveItems();
-    public bool HaveSpace() => itemsTower.HaveSpace();
+    public bool HaveItems() => itemsTower.IsHaveItems();
+    public bool HaveSpace() => itemsTower.IsHaveSpace();
 }
