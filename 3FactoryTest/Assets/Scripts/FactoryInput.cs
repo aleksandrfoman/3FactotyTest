@@ -17,8 +17,9 @@ public class FactoryInput : MonoBehaviour
     [SerializeField] 
     private Vector3Int size;
     [SerializeField] 
-    private ItemType[] itemType;
-    
+    private ItemType itemType;
+    [SerializeField] 
+    private float durationTime;
     private void Awake()
     {
         itemsTower = new ItemsTower(size.x, size.z,size.y);
@@ -30,23 +31,28 @@ public class FactoryInput : MonoBehaviour
         if (itemsTower.HaveItems())
         {
             var curItem = itemsTower.RemoveItem();
-            curItem.transform.parent = factoryPos;
-            curItem.transform.DOLocalMove(factoryPos.position* curItem.Scale,0.2f).SetEase(Ease.Linear);
-            Destroy(curItem.gameObject,0.2f);
+            curItem.transform.parent = null;
+            curItem.transform.DOLocalMove( factoryPos.position,durationTime).SetEase(Ease.Linear);
+            Destroy(curItem.gameObject,durationTime);
             return true;
         }
         return false;
     }
+
+    public bool IsFactoryHaveItems() => itemsTower.HaveItems();
     
     private void GetItem(Player player)
     {
         if (itemsTower.HaveSpace() && player.HaveItems())
         {
-            var curItem = player.GetItem();
-            itemsTower.AddItem(curItem);
-            curItem.transform.parent = startPos;
-            var lastPos = itemsTower.GetLastPos();
-            curItem.transform.DOLocalMove(lastPos* curItem.Scale,0.2f).SetEase(Ease.Linear);
-        }   
+            var curItem = player.GetItemFromType(itemType);
+            if (curItem != null)
+            {
+                itemsTower.AddItem(curItem);
+                curItem.transform.parent = startPos;
+                var lastPos = itemsTower.GetLastPos();
+                curItem.transform.DOLocalMove(lastPos * curItem.Scale, durationTime).SetEase(Ease.Linear);
+            }
+        }
     }
 }

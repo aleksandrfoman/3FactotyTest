@@ -35,10 +35,18 @@ public class ItemsTower
 
     public Item GetItemFromType(ItemType itemType)
     {
-        // for (int i = 0; i < layers; i++)
-        // {
-        //     
-        // }
+        for (int i = layers.Count-1;i>=0; i--)
+        {
+            if (layers[i].HaveItems())
+            {
+                var item = layers[i].GetItemFromType(itemType);
+                if (!layers[i].HaveItems())
+                {
+                    layers.Remove(layers[i]);
+                }
+                return item;
+            }
+        }
         return null;
     }
     
@@ -85,7 +93,7 @@ public class ItemsTower
         }
 
     }
-    
+
     public bool HaveItems()
     {
         for (int i = 0; i < layers.Count; i++)
@@ -151,10 +159,18 @@ public class ItemsLayer
     
     public Item GetItemFromType(ItemType itemType)
     {
-        // for (int i = 0; i < layers; i++)
-        // {
-        //     
-        // }
+        for (int i = lines.Count-1;i>=0; i--)
+        {
+            if (lines[i].HaveItems())
+            {
+                var item = lines[i].GetItemFromType(itemType);
+                if (!lines[i].HaveItems())
+                {
+                    lines.Remove(lines[i]);
+                }
+                return item;
+            }
+        }
         return null;
     }
     
@@ -183,7 +199,6 @@ public class ItemsLayer
             return new Vector2(x, y);
         }
     }
-    
     public bool HaveItems()
     {
         for (int i = 0; i < lines.Count; i++)
@@ -219,9 +234,16 @@ public class ItemsLine
     
     public Item GetItemFromType(ItemType itemType)
     {
-       // if(items)
-       // var item = items[items.Count - 1];
-        return null;
+        if (items.Find(x => x.ItemType == itemType) != null)
+        {
+            var item = items.Find(x => x.ItemType == itemType);
+            items.Remove(item);
+            return item;
+        }
+        else
+        {
+            return null;
+        }
     }
     
     public void AddItem(Item item)
@@ -238,7 +260,7 @@ public class ItemsLine
     {
         return items.Count > 0;
     }
-
+    
     public int GetLastPos()
     {
         return items.Count - 1;

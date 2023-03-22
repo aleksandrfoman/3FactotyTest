@@ -10,9 +10,8 @@ public class Player : MonoBehaviour
         if(item!=null)
         backpackManager.AddItem(item);
     }
-
-    public Item GetItem() => backpackManager.RemoveItem();
+    
+    public Item GetItemFromType(ItemType itemType) => backpackManager.GetItemFromType(itemType);
     public bool HaveSpace() => backpackManager.HaveSpace();
-
     public bool HaveItems() => backpackManager.HaveItems();
 }

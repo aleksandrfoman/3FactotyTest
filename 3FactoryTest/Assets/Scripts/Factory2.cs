@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FactoryB : Factory
+public class Factory2 : Factory
 {
     [SerializeField] private FactoryInput factoryInput;
     [SerializeField] private FactoryOutput factoryOutput;
@@ -13,8 +13,11 @@ public class FactoryB : Factory
             yield return new WaitForSeconds(time);
             if (factoryOutput.HaveSpace())
             {
-                if(factoryInput.IsTakeFactroy())
-                    OnTick.Invoke();
+                if (factoryInput.IsFactoryHaveItems())
+                {
+                    if(factoryInput.IsTakeFactroy())
+                        OnTick.Invoke();
+                }
             }
 
         }

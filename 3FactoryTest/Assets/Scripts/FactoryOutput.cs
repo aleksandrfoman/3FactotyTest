@@ -18,6 +18,8 @@ public class FactoryOutput : MonoBehaviour
     private Transform factoryPos;
     [SerializeField] 
     private Vector3Int size;
+    [SerializeField] 
+    private float durationTime;
     
     private void Awake()
     {
@@ -34,7 +36,7 @@ public class FactoryOutput : MonoBehaviour
             curItem.transform.parent = startPos;
             var lastPos = itemsTower.GetLastPos();
             curItem.transform.position = factoryPos.position;
-            curItem.transform.DOLocalMove(lastPos* itemDrop.Scale,0.2f).SetEase(Ease.Linear);
+            curItem.transform.DOLocalMove(lastPos* itemDrop.Scale,durationTime).SetEase(Ease.Linear);
         }
     }
 

@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] 
+    private FloatingJoystick floatingJoystick;
     [SerializeField]
     private float speed,rotateSpeed;
     private float horizontalDir, veritcalDir;
@@ -44,7 +46,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void MyInput()
     {
-        horizontalDir = Input.GetAxis("Horizontal");
-        veritcalDir = Input.GetAxis("Vertical");
+        horizontalDir = floatingJoystick.Horizontal;
+        veritcalDir = floatingJoystick.Vertical;
+        if (horizontalDir == 0  || veritcalDir == 0)
+        {
+            horizontalDir = Input.GetAxis("Horizontal");
+            veritcalDir = Input.GetAxis("Vertical");
+        }
+
     }
 }

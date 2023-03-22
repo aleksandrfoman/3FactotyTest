@@ -9,6 +9,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b8ee30bf80844b1daf0538035758583c3d298/73/18ed12da/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FactoryCleaner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FactoryInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -112,6 +113,11 @@
       <workItem from="1679426268709" duration="532000" />
       <workItem from="1679426826649" duration="181000" />
       <workItem from="1679433369751" duration="1761000" />
+      <workItem from="1679435408783" duration="1000" />
+      <workItem from="1679435456587" duration="13000" />
+      <workItem from="1679435485238" duration="2000" />
+      <workItem from="1679436013704" duration="4928000" />
+      <workItem from="1679441788794" duration="1790000" />
     </task>
     <servers />
   </component>
